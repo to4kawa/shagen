@@ -46,3 +46,4 @@ plot(hist1$mids,cumul,col="red",type="l",xaxt="n", yaxt="n",ylab="")
 ```
 
 
+
