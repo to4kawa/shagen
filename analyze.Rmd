@@ -1,0 +1,49 @@
+---
+title: 言語情報の統計分析
+auther: "Toshihisa Kawamata"
+data: "2019/08/27"
+output:
+  html_document:
+  keep_md: yes
+  toc: yes
+  toc_float: true
+---
+
+## read data  
+lecture url: http://www2.hak.hokkyodai.ac.jp/fukuda/lecture/SocialLinguistics/html/01introduction.html
+
+```{r load library}
+library(readr)
+library(dplyr)
+```
+
+```{r download file}
+url <- "http://www2.hak.hokkyodai.ac.jp/fukuda/lecture/SocialLinguistics/html/datahyou.dat"
+if(!file.exists("datahyou.dat")) download.file(url,"datahyou.dat")
+```
+  
+```{r read data}
+datahyou <- read_tsv("datahyou.dat",locale = locale(encoding = "cp932"))
+```
+
+## 投稿者年齢の度数分布表とヒストグラムを作成
+```{r hist plot}
+par(family = "HiraKakuProN-W3") # グラフの日本語対応
+
+hist1 <- hist(datahyou$年齢,breaks=10) 
+text(hist1$mids,hist1$counts,hist1$counts,cex=0.8,pos=3,col="red")
+```
+
+```{r cumulate hist}
+cumul <- cumsum(hist1$count)/sum(hist1$count)
+par(family = "HiraKakuProN-W3") # グラフの日本語対応
+
+hist1 <- hist(datahyou$年齢,breaks=10,plot=F) 
+plot(hist1$mids,hist1$count,type="h",lwd=20)
+par(new=T)
+plot(hist1$mids,cumul,col="red",type="l",xaxt="n", yaxt="n",ylab="")
+
+```
+
+テスト
+
