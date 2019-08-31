@@ -10,7 +10,7 @@ output:
 ---
 
 ## read data  
-lecture url: http://www2.hak.hokkyodai.ac.jp/fukuda/lecture/SocialLinguistics/html/01introduction.html
+lecture url: http://www2.hak.hokkyodai.ac.jp/fukuda/lecture/SocialLinguistics/shagen.html
 
 ```{r load library}
 library(readr)
